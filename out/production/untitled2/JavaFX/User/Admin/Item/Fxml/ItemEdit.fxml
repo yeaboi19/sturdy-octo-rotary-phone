@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.Item.ItemEditController">
+   <children>
+      <VBox layoutX="14.0" layoutY="8.0" prefHeight="381.0" prefWidth="347.0">
+         <children>
+            <Label text="Item Edit Scene">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Original Item" />
+            <TextField fx:id="ogName" promptText="Name">
+               <VBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="ogPrice" promptText="Price">
+               <VBox.margin>
+                  <Insets bottom="5.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Edited Item" />
+            <TextField fx:id="edName" promptText="Name">
+               <VBox.margin>
+                  <Insets right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="edPrice" promptText="Price">
+               <VBox.margin>
+                  <Insets bottom="15.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <TableView fx:id="itemTableview" layoutX="361.0" layoutY="8.0" prefHeight="381.0" prefWidth="230.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Item Name" />
+          <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
+        </columns>
+      </TableView>
+      <HBox layoutX="22.0" layoutY="357.0" prefHeight="42.0" prefWidth="337.0">
+         <children>
+            <Button fx:id="submit" mnemonicParsing="false" onAction="#onSubmitButtonClicked" text="Submit" />
+            <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClicked" text="Back To Select">
+               <HBox.margin>
+                  <Insets left="180.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

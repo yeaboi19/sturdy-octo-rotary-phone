@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.Item.ItemRemoveController">
+    <children>
+        <VBox prefHeight="278.0" prefWidth="373.0">
+            <children>
+                <Label text="Item Remove Scene">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="20.0" />
+                    </VBox.margin>
+                </Label>
+                <Label text="Item Remove">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label text="Name Input:">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+                <TextField fx:id="name" promptText="Name">
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                    </VBox.margin>
+                </TextField>
+            <Label text="Price Input">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+                <TextField fx:id="price" promptText="Price">
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                    </VBox.margin>
+                </TextField>
+            </children>
+        </VBox>
+      <TableView fx:id="tableView" layoutX="372.0" layoutY="14.0" prefHeight="379.0" prefWidth="214.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Item Name" />
+          <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Price" />
+        </columns>
+      </TableView>
+      <HBox layoutY="359.0" prefHeight="39.0" prefWidth="373.0">
+         <children>
+            <Button fx:id="remove" mnemonicParsing="false" onAction="#onRemoveButtonClicked" text="Remove">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin></Button>
+            <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClicked" text="Back To Select">
+               <HBox.margin>
+                  <Insets left="190.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+    </children>
+</AnchorPane>

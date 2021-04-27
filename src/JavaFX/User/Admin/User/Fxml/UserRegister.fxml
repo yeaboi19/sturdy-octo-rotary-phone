@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.User.UserRegisterController">
+    <children>
+        <VBox prefHeight="322.0" prefWidth="600.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label prefHeight="39.0" prefWidth="183.0" text="Register Scene">
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+                </Label>
+                <Label prefHeight="28.0" prefWidth="102.0" text="UserName input:" />
+                <TextField fx:id="userName" prefHeight="25.0" prefWidth="242.0" promptText="UserName">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </TextField>
+                <Label prefHeight="28.0" prefWidth="102.0" text="Email input:" />
+                <TextField fx:id="email" promptText="Email" />
+                <Label prefHeight="28.0" prefWidth="102.0" text="Password input:" />
+                <PasswordField fx:id="password" promptText="Password" />
+            </children>
+        </VBox>
+        <HBox layoutY="325.0" prefHeight="75.0" prefWidth="600.0">
+            <children>
+                <Button fx:id="submit" mnemonicParsing="false" onAction="#onSubmitButtonClicked" prefHeight="25.0" prefWidth="65.0" text="Submit" />
+                <Button fx:id="selScene" mnemonicParsing="false" onAction="#onSelSceneButtonClicked" prefHeight="25.0" prefWidth="115.0" text="To Select Scene">
+                    <HBox.margin>
+                        <Insets left="400.0" />
+                    </HBox.margin></Button>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding></HBox>
+    </children>
+</AnchorPane>

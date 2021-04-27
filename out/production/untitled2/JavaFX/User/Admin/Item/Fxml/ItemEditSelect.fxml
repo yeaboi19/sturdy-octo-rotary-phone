@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="274.0" prefWidth="291.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.Item.ItemEditSelectController">
+   <children>
+      <VBox layoutX="3.0" prefHeight="316.0" prefWidth="288.0">
+         <children>
+            <Label text="Item Edit Select">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+            <Label text="---------------------------------------------------">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="38.0" prefWidth="600.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" top="57.0" />
+               </VBox.margin>
+               <children>
+                  <Hyperlink fx:id="add" onAction="#onAddButtonClicked" text="Go to Item Add" underline="true">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font></Hyperlink>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="600.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <children>
+                  <Hyperlink fx:id="edit" onAction="#onEditButtonClicked" text="Go to Item Edit" underline="true">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="600.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <children>
+                  <Hyperlink fx:id="remove" onAction="#onRemoveButtonClicked" text="Go to Item Remove" underline="true">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="600.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <children>
+                  <Hyperlink fx:id="back" onAction="#onBackButtonClicked" text="Go back to User Login" underline="true">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="600.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <children>
+                  <Hyperlink fx:id="go" onAction="#onGoButtonClicked" text="Go to User Edit Menu" underline="true">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

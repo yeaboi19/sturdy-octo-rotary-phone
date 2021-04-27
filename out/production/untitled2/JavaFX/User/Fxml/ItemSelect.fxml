@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.ItemSelectController">
+    <children>
+        <TableView fx:id="tableView" layoutX="3.0" layoutY="45.0" prefHeight="349.0" prefWidth="369.0">
+            <columns>
+                <TableColumn fx:id="columnName" prefWidth="75.0" text="Item Name" />
+                <TableColumn fx:id="columnPrice" prefWidth="75.0" text="Item Price" />
+            </columns>
+        </TableView>
+        <HBox layoutY="-15.0" prefHeight="46.0" prefWidth="600.0">
+            <children>
+                <Label prefHeight="39.0" prefWidth="191.0" text="Select Scene">
+                    <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font size="27.0" />
+                    </font>
+                </Label>
+                <Button fx:id="finish" mnemonicParsing="false" onAction="#onFinishButtonPressed" prefHeight="26.0" prefWidth="67.0" text="Finished">
+                    <HBox.margin>
+                        <Insets bottom="25.0" left="290.0" right="20.0" top="24.0" />
+                    </HBox.margin></Button>
+            </children>
+        </HBox>
+      <TableView fx:id="selectedTableView" layoutX="380.0" layoutY="45.0" prefHeight="349.0" prefWidth="214.0">
+        <columns>
+          <TableColumn fx:id="selectedColumnName" prefWidth="75.0" text="Item Name" />
+          <TableColumn fx:id="selectedColumnPrice" prefWidth="75.0" text="Item Price" />
+        </columns>
+      </TableView>
+      <Label fx:id="errorLabel" layoutX="336.0" layoutY="7.0" prefHeight="26.0" prefWidth="170.0" />
+    </children>
+</AnchorPane>
