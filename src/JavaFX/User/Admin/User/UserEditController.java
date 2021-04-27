@@ -67,7 +67,7 @@ public class UserEditController implements Initializable {
 
         stage = (Stage) selScene.getScene().getWindow();
         try {
-            parent = FXMLLoader.load( getClass().getResource("Fxml/UserEditSelect.fxml"));//insert ItemEditSelect.fxml path here...
+            parent = FXMLLoader.load( getClass().getResource("Fxml/UserEditSelect.fxml"));
             Scene scene =new Scene(parent);
             stage.setScene(scene);
             stage.show();
