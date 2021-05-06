@@ -46,23 +46,28 @@ public class UserRemoveController implements Initializable {
         if (userName.getText().isEmpty() && email.getText().isEmpty() && password.getText().isEmpty()) {
             error.setText("please fill all the textFields");
         } else {
-            UserRemove userRemove = new UserRemove();
-            int errCode = userRemove.remove(userName.getText(), email.getText(), password.getText());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("you sure you want to delete user \"" + userName.getText() + "\"?");
+            alert.show();
+            if (alert.showAndWait().get().getButtonData().isDefaultButton()) {
+                UserRemove userRemove = new UserRemove();
+                int errCode = userRemove.remove(userName.getText(), email.getText(), password.getText());
 
-            userNameColumn.setCellValueFactory(new PropertyValueFactory("uName"));
-            emailColumn.setCellValueFactory(new PropertyValueFactory("Email"));
-            passwordColumn.setCellValueFactory(new PropertyValueFactory("pass"));
-            ObservableList<User> UserObservableList = FXCollections.observableArrayList();
-            FileIO fileIO = new FileIO();
-            UserObservableList.addAll(fileIO.getUserList());
-            tableView.setItems(UserObservableList);
-            if (errCode == 1) {
-                error.setText("successfully removed " + userName.getText());
-                userName.setText("");
-                email.setText("");
-                password.setText("");
-            } else {
-                error.setText("error try again");
+                userNameColumn.setCellValueFactory(new PropertyValueFactory("uName"));
+                emailColumn.setCellValueFactory(new PropertyValueFactory("Email"));
+                passwordColumn.setCellValueFactory(new PropertyValueFactory("pass"));
+                ObservableList<User> UserObservableList = FXCollections.observableArrayList();
+                FileIO fileIO = new FileIO();
+                UserObservableList.addAll(fileIO.getUserList());
+                tableView.setItems(UserObservableList);
+                if (errCode == 1) {
+                    error.setText("successfully removed " + userName.getText());
+                    userName.setText("");
+                    email.setText("");
+                    password.setText("");
+                } else {
+                    error.setText("error try again");
+                }
             }
         }
     }

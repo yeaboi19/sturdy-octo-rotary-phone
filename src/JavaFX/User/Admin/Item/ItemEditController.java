@@ -12,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -43,6 +40,8 @@ public class ItemEditController implements Initializable {
     TableColumn nameColumn;
     @FXML
     TableColumn priceColumn;
+    @FXML
+    Label error;
 
 
     public void onBackButtonClicked(){
@@ -60,24 +59,32 @@ public class ItemEditController implements Initializable {
         }
     }
 
-    public void onSubmitButtonClicked(){
-        ItemEdit itemEdit = new ItemEdit();
-        if(edPrice==null){
-            edPrice=ogPrice;
-        }else if(edName==null){
-            edName=ogName;
+    public void onSubmitButtonClicked() {
+        if (ogName.getText().isEmpty() && ogPrice.getText().isEmpty()) {
+            error.setText("please fill all the textFields");
+        } else {
+            ItemEdit itemEdit = new ItemEdit();
+            double priceOg = Double.valueOf(ogPrice.getText());
+            double priceEd = Double.valueOf(edPrice.getText());
+            int errCode =itemEdit.Edit(ogName.getText(), priceOg, edName.getText(), priceEd);
+
+            nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
+            priceColumn.setCellValueFactory(new PropertyValueFactory("price"));
+
+            ObservableList<Item> itemObservableList = FXCollections.observableArrayList();
+            FileIO fileIO = new FileIO();
+            itemObservableList.addAll(fileIO.getItemList());
+            itemTableview.setItems(itemObservableList);
+            if (errCode == 1) {
+                error.setText("successfully edited " + ogName.getText()+" to "+edName.getText());
+                ogName.setText("");
+                ogPrice.setText("");
+                edName.setText("");
+                edPrice.setText("");
+            } else {
+                error.setText("error try again");
+            }
         }
-        double priceOg=Double.valueOf(ogPrice.getText());
-        double priceEd=Double.valueOf(edPrice.getText());
-        itemEdit.Edit(ogName.getText(),priceOg,edName.getText(),priceEd);
-
-        nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory("price"));
-
-        ObservableList<Item> itemObservableList = FXCollections.observableArrayList();
-        FileIO fileIO = new FileIO();
-        itemObservableList.addAll(fileIO.getItemList());
-        itemTableview.setItems(itemObservableList);
     }
 
     @Override
@@ -105,5 +112,5 @@ public class ItemEditController implements Initializable {
         });
     }
 }
-//TODO: make label
+//TODO: make label //ok  //done
 //TODO:

@@ -4,7 +4,6 @@ import Items.Item;
 import User.User;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class FileIO {
@@ -131,7 +130,7 @@ public class FileIO {
         }
     }
 
-    public void removeItem(Item item) {
+    public int removeItem(Item item) {
         ArrayList<Item> itemList = getItemList();
         boolean isInList = false;
         for (int i = 0; i < itemList.size(); i++) {
@@ -144,6 +143,7 @@ public class FileIO {
         }
         if (!isInList) {
             System.out.println("Name or price is incorrect\nPlease try again...");
+            return 0;
         }
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(filePath.itemPath);
@@ -154,17 +154,18 @@ public class FileIO {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return 1;
     }
 
     public int exportList(ArrayList<Item> userItemList) {
         int fullPrice = 0;
-        String userItemListInString="";
+        String userItemListInString = "";
         for (int i = 0; i < userItemList.size(); i++) {
             fullPrice += userItemList.get(i).getPrice();
-            userItemListInString+="Item's name - "+userItemList.get(i).getName()+" || Item's price - "+userItemList.get(i).getPrice()+"\n";
+            userItemListInString += "Item's name - " + userItemList.get(i).getName() + " || Item's price - " + userItemList.get(i).getPrice() + "\n";
         }
-        userItemListInString+="\nFull price - "+fullPrice;
-        byte[] a=userItemListInString.getBytes();
+        userItemListInString += "\nFull price - " + fullPrice;
+        byte[] a = userItemListInString.getBytes();
         try {
             System.out.println("sucsessfuly wrote list to device");
 //            FileOutputStream fileOutputStream = new FileOutputStream(filePath.userChoicePath);
@@ -176,9 +177,9 @@ public class FileIO {
 //            }
 //            bufferedOutputStream.close();
 //            fileOutputStream.close();
-            FileWriter fileWriter =new FileWriter(filePath.userChoicePath);
+            FileWriter fileWriter = new FileWriter(filePath.userChoicePath);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for(int i=0;i<userItemList.size();i++){
+            for (int i = 0; i < userItemList.size(); i++) {
                 bufferedWriter.write(userItemList.get(i).toString());
                 bufferedWriter.newLine();
             }

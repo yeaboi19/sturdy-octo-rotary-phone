@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: EFEBCE;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.Item.ItemEditController">
    <children>
-      <VBox layoutX="14.0" layoutY="8.0" prefHeight="381.0" prefWidth="347.0">
+      <VBox layoutX="14.0" layoutY="8.0" prefHeight="274.0" prefWidth="347.0">
          <children>
             <Label text="Item Edit Scene">
                <font>
@@ -57,5 +57,6 @@
             </Button>
          </children>
       </HBox>
+      <Label fx:id="error" layoutX="22.0" layoutY="321.0" />
    </children>
 </AnchorPane>

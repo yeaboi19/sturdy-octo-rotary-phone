@@ -3,7 +3,6 @@ package JavaFX.User.Admin.Item;
 import FileIO.FileIO;
 import Items.Item;
 import Items.ItemRemove;
-import User.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -12,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -39,28 +35,46 @@ public class ItemRemoveController implements Initializable {
     TableColumn nameColumn;
     @FXML
     TableColumn priceColumn;
+    @FXML
+    Label error;
 
-    public void onRemoveButtonClicked(){
-        ItemRemove itemRemove = new ItemRemove();
-        itemRemove.remove(name.getText(),Double.valueOf(price.getText()));
+    public void onRemoveButtonClicked() {
+        if (name.getText().isEmpty() && price.getText().isEmpty()) {
+            error.setText("please fill all the textFields");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("you sure you want to delete item \"" + name.getText() + "\"?");
+            alert.show();
+            if (alert.showAndWait().get().getButtonData().isDefaultButton()) {
+                ItemRemove itemRemove = new ItemRemove();
+                int errCode = itemRemove.remove(name.getText(), Double.valueOf(price.getText()));
 
-        nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory("price"));
+                nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
+                priceColumn.setCellValueFactory(new PropertyValueFactory("price"));
 
-        ObservableList<Item> itemObservableList = FXCollections.observableArrayList();
-        FileIO fileIO = new FileIO();
-        itemObservableList.addAll(fileIO.getItemList());
-        tableView.setItems(itemObservableList);
+                ObservableList<Item> itemObservableList = FXCollections.observableArrayList();
+                FileIO fileIO = new FileIO();
+                itemObservableList.addAll(fileIO.getItemList());
+                tableView.setItems(itemObservableList);
+                if (errCode == 1) {
+                    error.setText("successfully removed " + name.getText());
+                    name.setText("");
+                    price.setText("");
+                } else {
+                    error.setText("error try again");
+                }
+            }
+        }
     }
 
-    public void onBackButtonClicked(){
-        Stage stage =new Stage();
+    public void onBackButtonClicked() {
+        Stage stage = new Stage();
         Parent parent;
 
         stage = (Stage) back.getScene().getWindow();
         try {
-            parent = FXMLLoader.load( getClass().getResource("../Item/Fxml/ItemEditSelect.fxml"));//insert ItemEditSelect.fxml path here...
-            Scene scene =new Scene(parent);
+            parent = FXMLLoader.load(getClass().getResource("../Item/Fxml/ItemEditSelect.fxml"));//insert ItemEditSelect.fxml path here...
+            Scene scene = new Scene(parent);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

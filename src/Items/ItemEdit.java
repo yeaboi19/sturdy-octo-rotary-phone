@@ -7,10 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ItemEdit {
-    public void Edit(String name, double price, String nameChange, double priceChange) {
+    public int Edit(String name, double price, String nameChange, double priceChange) {
 
         Item editItem = new Item();
         editItem.setName(name);
@@ -29,13 +28,13 @@ public class ItemEdit {
                 break;
 
             } else {
-                System.out.println("incorrect command");
+                System.out.println("incorrect command");//nice console times...
                 break;
             }
         }
         if (!isCorrectItem) {
             System.out.println("Name or price is incorrect\nPlease try again...");
-            return;
+            return 0;
         }
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(new FilePath().itemPath);
@@ -48,5 +47,6 @@ public class ItemEdit {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return 1;
     }
 }
