@@ -1,11 +1,11 @@
 package JavaFX.User.Admin.User;
 
 import FileIO.FileIO;
-import Items.Item;
 import User.User;
 import User.UserEdit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,11 +13,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class UserEditController implements Initializable {
@@ -47,12 +47,13 @@ public class UserEditController implements Initializable {
     Button selScene;
     @FXML
     Label error;
-    public void onSubmitButtonClicked(){
+
+    public void onSubmitButtonClicked() {
         UserEdit userEdit = new UserEdit();
-        int errCode = userEdit.Edit(ogUsername.getText(),ogEmail.getText(),ogPassword.getText(),edUsername.getText(),edEmail.getText(),edPassword.getText());
-        if(ogUsername.getText().isEmpty() && ogEmail.getText().isEmpty() && ogPassword.getText().isEmpty() && edUsername.getText().isEmpty() && edEmail.getText().isEmpty() && edPassword.getText().isEmpty()) {
+        int errCode = userEdit.Edit(ogUsername.getText(), ogEmail.getText(), ogPassword.getText(), edUsername.getText(), edEmail.getText(), edPassword.getText());
+        if (ogUsername.getText().isEmpty() && ogEmail.getText().isEmpty() && ogPassword.getText().isEmpty() && edUsername.getText().isEmpty() && edEmail.getText().isEmpty() && edPassword.getText().isEmpty()) {
             error.setText("please fill all the textFields");
-        }else{
+        } else {
             if (errCode == 1) {
                 userNameColumn.setCellValueFactory(new PropertyValueFactory("uName"));
                 emailColumn.setCellValueFactory(new PropertyValueFactory("Email"));
@@ -73,14 +74,15 @@ public class UserEditController implements Initializable {
             }
         }
     }
-    public void onSelSceneButtonClicked(){
-        Stage stage =new Stage();
+
+    public void onSelSceneButtonClicked() {
+        Stage stage = new Stage();
         Parent parent;
 
         stage = (Stage) selScene.getScene().getWindow();
         try {
-            parent = FXMLLoader.load( getClass().getResource("Fxml/UserEditSelect.fxml"));
-            Scene scene =new Scene(parent);
+            parent = FXMLLoader.load(getClass().getResource("Fxml/UserEditSelect.fxml"));
+            Scene scene = new Scene(parent);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -98,5 +100,23 @@ public class UserEditController implements Initializable {
         userObservableList.addAll(fileIO.getUserList());
         tableView.setItems(userObservableList);
 
+
+        tableView.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (mouseEvent.getClickCount() == 2) {
+                    System.out.println(mouseEvent.getButton().name());
+                    int index = tableView.getSelectionModel().getSelectedIndex();
+                    User user = (User) tableView.getItems().get(index);
+
+                    ogUsername.setText(user.getUName());
+                    ogEmail.setText(user.getEmail());
+                    ogPassword.setText(user.getPass());
+                }
+            }
+        });
+
     }
+
+
 }
