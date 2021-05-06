@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.Item.ItemEditController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: EFEBCE;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.Item.ItemEditController">
    <children>
       <VBox layoutX="14.0" layoutY="8.0" prefHeight="381.0" prefWidth="347.0">
          <children>
@@ -49,8 +49,8 @@
       </TableView>
       <HBox layoutX="22.0" layoutY="357.0" prefHeight="42.0" prefWidth="337.0">
          <children>
-            <Button fx:id="submit" mnemonicParsing="false" onAction="#onSubmitButtonClicked" text="Submit" />
-            <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClicked" text="Back To Select">
+            <Button fx:id="submit" mnemonicParsing="false" onAction="#onSubmitButtonClicked" style="-fx-background-color: #3D5A80;" text="Submit" textFill="WHITE" />
+            <Button fx:id="back" mnemonicParsing="false" onAction="#onBackButtonClicked" style="-fx-background-color: D6CE93;" text="Back To Select">
                <HBox.margin>
                   <Insets left="180.0" />
                </HBox.margin>

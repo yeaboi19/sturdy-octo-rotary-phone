@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserEdit {
-    public void Edit(String userName, String email, String pass, String userChange, String emailChange, String passChange) {
+    public int Edit(String userName, String email, String pass, String userChange, String emailChange, String passChange) {
         User editUser = new User();
         editUser.setUName(userName);
         editUser.setEmail(email);
@@ -44,7 +44,7 @@ public class UserEdit {
         }
         if (!isCorrectUser) {
             System.out.println("Username, Email or password is incorrect\nPlease try again...");
-            return;
+            return -1;
         }
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(new FilePath().loginPath);
@@ -57,5 +57,6 @@ public class UserEdit {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return 1;
     }
 }

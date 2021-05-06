@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="282.0" prefWidth="358.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.Item.ItemAddController">
+<AnchorPane prefHeight="282.0" prefWidth="358.0" style="-fx-background-color: EFEBCE;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.Item.ItemAddController">
     <children>
         <VBox layoutX="8.0" layoutY="8.0" prefHeight="245.0" prefWidth="343.0">
             <children>
@@ -31,12 +31,13 @@
                         <Insets bottom="5.0" right="10.0" top="10.0" />
                     </VBox.margin>
                 </TextField>
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAddButtonClicked" text="Add">
+            <Label fx:id="error">
                <VBox.margin>
-                  <Insets top="35.0" />
-               </VBox.margin></Button>
+                  <Insets left="5.0" top="15.0" />
+               </VBox.margin></Label>
             </children>
         </VBox>
-      <Button fx:id="back" layoutX="273.0" layoutY="214.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="25.0" prefWidth="61.0" text="Go back" />
+      <Button fx:id="back" layoutX="283.0" layoutY="241.0" mnemonicParsing="false" onAction="#onBackButtonClicked" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: D6CE93;" text="Go back" />
+      <Button fx:id="addButton" layoutX="12.0" layoutY="241.0" mnemonicParsing="false" onAction="#onAddButtonClicked" style="-fx-background-color: #3D5A80;" text="Add" textFill="WHITE" />
     </children>
 </AnchorPane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F64E7;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: EFEBCE;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.LoginController">
     <children>
         <VBox prefHeight="322.0" prefWidth="600.0">
             <padding>
@@ -36,11 +36,16 @@
                </VBox.margin></TextField>
                 <Label prefHeight="28.0" prefWidth="102.0" text="Password input:" />
                 <PasswordField fx:id="password" promptText="Password" />
+            <Label fx:id="error">
+               <VBox.margin>
+                  <Insets top="45.0" />
+               </VBox.margin>
+            </Label>
             </children>
         </VBox>
         <HBox layoutY="325.0" prefHeight="75.0" prefWidth="600.0">
             <children>
-                <Button fx:id="submit" mnemonicParsing="false" onAction="#onSubmitButtonPressed" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: BB8588;" text="Submit" />
+                <Button fx:id="submit" mnemonicParsing="false" onAction="#onSubmitButtonPressed" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #3D5A80;" text="Submit" textFill="WHITE" />
                 <Button fx:id="regScene" mnemonicParsing="false" onAction="#onRegSceneButtonPressed" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: A3A380;" text="To Register Scene">
                     <HBox.margin>
                         <Insets left="380.0" />

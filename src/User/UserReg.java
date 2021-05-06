@@ -5,7 +5,7 @@ import FileIO.FileIO;
 import java.util.Scanner;
 
 public class UserReg {
-    public void reg(String userName,String email,String pass){
+    public int reg(String userName,String email,String pass){
         //input...
         User newUser = new User();
         newUser.setUName(userName);
@@ -18,11 +18,14 @@ public class UserReg {
         if(!fileIO.isRegisteredUser(newUser,fileIO.getUserList())){
             if(userName==null || email==null || pass==null){
                 System.out.println("this user is already registered");
+                return 0;
             }else{
                 System.out.println("successfully registered user");
+                return 1;
             }
         }else{
             System.out.println("successfully registered user");
+            return 1;
         }
     }
 }

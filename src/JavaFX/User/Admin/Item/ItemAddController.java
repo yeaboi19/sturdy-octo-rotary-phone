@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -20,6 +21,8 @@ public class ItemAddController {
     Button addButton;
     @FXML
     Button back;
+    @FXML
+    Label error;
     public void onBackButtonClicked(){
         Stage stage =new Stage();
         Parent parent;
@@ -37,6 +40,11 @@ public class ItemAddController {
     public void onAddButtonClicked(){
         ItemAdd itemAdd = new ItemAdd();
         double price1=Double.valueOf(price.getText());
-        itemAdd.add(name.getText(),price1);
+        int errCode = itemAdd.add(name.getText(),price1);
+        if(errCode==1){
+            error.setText(name.getText()+" just got added");
+        }else{
+            error.setText("this item is already added");
+        }
     }
 }

@@ -5,7 +5,7 @@ import FileIO.FileIO;
 import java.util.Scanner;
 
 public class ItemAdd {
-    public void add(String name,double price){
+    public int add(String name,double price){
         Item addItem = new Item();
         addItem.setName(name);
         addItem.setPrice(price);
@@ -15,8 +15,10 @@ public class ItemAdd {
         fileIO.setItems(addItem);
         if(!fileIO.isAddedItem(addItem,fileIO.getItemList())){
             System.out.println("this Item is already Added");
+            return 0;
         }else{
             System.out.println("successfully added Item");
+            return 1;
         }
     }
 }

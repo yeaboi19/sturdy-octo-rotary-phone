@@ -82,10 +82,11 @@ public class ItemEditController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory("price"));
-
         ObservableList<Item> itemObservableList = FXCollections.observableArrayList();
         FileIO fileIO = new FileIO();
         itemObservableList.addAll(fileIO.getItemList());
         itemTableview.setItems(itemObservableList);
     }
 }
+//TODO: make label
+//TODO:

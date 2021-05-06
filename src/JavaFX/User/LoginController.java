@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -24,38 +25,51 @@ public class LoginController {
     Button submit;
     @FXML
     Button regScene;
-    public void onSubmitButtonPressed(){
+    @FXML
+    Label error;
+    public void onSubmitButtonPressed() {
         UserLogin userLogin = new UserLogin();
-        User Temp =userLogin.login(userName.getText(),email.getText(),password.getText());
+        User Temp = userLogin.login(userName.getText(), email.getText(), password.getText());
         System.out.println(Temp);
         /* TODO: when logged in display name on Select Scenes || DIFFICULTY:HARD */
-        if(!Temp.equals(Temp.empty()) && Temp.equals(Temp.Admin())){
-            Stage stage =new Stage();
-            Parent parent;
+        if (!userName.getText().isEmpty() && !email.getText().isEmpty() && !password.getText().isEmpty()) {//1111111
+            if (!Temp.equals(Temp.empty()) && Temp.equals(Temp.Admin())) {
+                Stage stage = new Stage();
+                Parent parent;
 
-            stage = (Stage) submit.getScene().getWindow();
-            try {
-                parent = FXMLLoader.load(getClass().getResource("Admin/User/Fxml/UserEditSelect.fxml"));
-                Scene scene =new Scene(parent);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else if(!Temp.equals(Temp.empty())){
-            Stage stage =new Stage();
-            Parent parent;
+                stage = (Stage) submit.getScene().getWindow();
+                try {
+                    parent = FXMLLoader.load(getClass().getResource("Admin/User/Fxml/UserEditSelect.fxml"));
+                    Scene scene = new Scene(parent);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (!Temp.equals(Temp.empty())) {
+                Stage stage = new Stage();
+                Parent parent;
 
-            stage = (Stage) submit.getScene().getWindow();
-            try {
-                parent = FXMLLoader.load(getClass().getResource("Fxml/ItemSelect.fxml"));
-                Scene scene =new Scene(parent);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
+                stage = (Stage) submit.getScene().getWindow();
+                try {
+                    parent = FXMLLoader.load(getClass().getResource("Fxml/ItemSelect.fxml"));
+                    Scene scene = new Scene(parent);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                if (error.getText().equalsIgnoreCase("incorrect input")) {
+                    error.setText("incorrect input ...");
+                } else {
+                    error.setText("incorrect input");
+                }
+                /*DONE: Make an "Error Label" B)*/
             }
-        }/*TODO: Make an "Error Label"*/
+        } else {
+            error.setText("TextFields cannot be empty");
+        }
     }
     public void onRegSceneButtonPressed(){
         Stage stage =new Stage();

@@ -7,7 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,9 +25,23 @@ public class UserRegisterController {
     Button submit;
     @FXML
     Button selScene;
+    @FXML
+    Label error;
     public void onSubmitButtonClicked(){
-        UserReg userReg = new UserReg();
-        userReg.reg(userName.getText(),email.getText(),password.getText());
+        if(userName.getText().isEmpty() && email.getText().isEmpty() && password.getText().isEmpty()){
+            error.setText("please fill all the textFields");
+        }else{
+            UserReg userReg = new UserReg();
+            int errCode=userReg.reg(userName.getText(),email.getText(),password.getText());
+            if(errCode==1){
+                error.setText("successfully registered "+userName.getText());
+                userName.setText("");
+                email.setText("");
+                password.setText("");
+            }else if(errCode==0){
+                error.setText("this user is already registered");
+            }
+        }
     }
     public void onSelSceneButtonClicked(){
         Stage stage =new Stage();

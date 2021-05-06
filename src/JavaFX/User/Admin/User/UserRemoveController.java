@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -40,17 +37,31 @@ public class UserRemoveController implements Initializable {
     TableColumn emailColumn;
     @FXML
     TableColumn passwordColumn;
+    @FXML
+    Label error;
     public void onRemoveButtonClicked(){
-        UserRemove userRemove = new UserRemove();
-        userRemove.remove(userName.getText(),email.getText(),password.getText());
+        if(userName.getText().isEmpty() && email.getText().isEmpty() && password.getText().isEmpty()){
+            error.setText("please fill all the textFields");
+        }else{
+            UserRemove userRemove = new UserRemove();
+            int errCode = userRemove.remove(userName.getText(),email.getText(),password.getText());
 
-        userNameColumn.setCellValueFactory(new PropertyValueFactory("uName"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory("Email"));
-        passwordColumn.setCellValueFactory(new PropertyValueFactory("pass"));
-        ObservableList<User> UserObservableList = FXCollections.observableArrayList();
-        FileIO fileIO = new FileIO();
-        UserObservableList.addAll(fileIO.getUserList());
-        tableView.setItems(UserObservableList);
+            userNameColumn.setCellValueFactory(new PropertyValueFactory("uName"));
+            emailColumn.setCellValueFactory(new PropertyValueFactory("Email"));
+            passwordColumn.setCellValueFactory(new PropertyValueFactory("pass"));
+            ObservableList<User> UserObservableList = FXCollections.observableArrayList();
+            FileIO fileIO = new FileIO();
+            UserObservableList.addAll(fileIO.getUserList());
+            tableView.setItems(UserObservableList);
+            if(errCode==1){
+                error.setText("successfully removed "+userName.getText());
+                userName.setText("");
+                email.setText("");
+                password.setText("");
+            }else {
+                error.setText("error try again");
+            }
+        }
     }
     public void onSelSceneButtonClicked(){
         Stage stage =new Stage();
@@ -78,3 +89,5 @@ public class UserRemoveController implements Initializable {
         tableView.setItems(UserObservableList);
     }
 }
+//TODO: updating tableview after removin user
+//TODO: clicking from tableview...

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.User.UserEditController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: EFEBCE;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.Admin.User.UserEditController">
     <children>
         <VBox layoutX="14.0" layoutY="8.0" prefHeight="302.0" prefWidth="347.0">
             <children>
@@ -49,19 +49,24 @@
                   <Insets bottom="5.0" right="10.0" top="10.0" />
                </VBox.margin>
             </TextField>
+            <Label fx:id="error">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Label>
             </children>
         </VBox>
-        <TableView fx:id="tableView" layoutX="361.0" layoutY="8.0" prefHeight="381.0" prefWidth="230.0">
+        <TableView fx:id="tableView" layoutX="361.0" layoutY="8.0" prefHeight="381.0" prefWidth="230.0" style="-fx-background-color: A3A380;">
             <columns>
-                <TableColumn prefWidth="75.0" text="User Name" fx:id="userNameColumn" />
-                <TableColumn prefWidth="75.0" text="Email" fx:id="emailColumn"/>
-            <TableColumn prefWidth="75.0" text="Password" fx:id="passwordColumn"/>
+                <TableColumn fx:id="userNameColumn" prefWidth="75.0" text="User Name" />
+                <TableColumn fx:id="emailColumn" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="passwordColumn" prefWidth="75.0" text="Password" />
             </columns>
         </TableView>
       <HBox layoutX="14.0" layoutY="348.0" prefHeight="41.0" prefWidth="337.0">
          <children>
-                <Button fx:id="submit" mnemonicParsing="false" onAction="#onSubmitButtonClicked" text="Submit" />
-            <Button fx:id="selScene" mnemonicParsing="false" onAction="#onSelSceneButtonClicked" text="To Select Scene">
+                <Button fx:id="submit" mnemonicParsing="false" onAction="#onSubmitButtonClicked" style="-fx-background-color: #3D5A80;" text="Submit" textFill="WHITE" />
+            <Button fx:id="selScene" mnemonicParsing="false" onAction="#onSelSceneButtonClicked" style="-fx-background-color: D6CE93;" text="To Select Scene">
                <HBox.margin>
                   <Insets left="180.0" />
                </HBox.margin>

@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.ItemSelectController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: EFEBCE;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.User.ItemSelectController">
     <children>
-        <TableView fx:id="tableView" layoutX="3.0" layoutY="45.0" prefHeight="349.0" prefWidth="369.0">
+        <TableView fx:id="tableView" layoutX="3.0" layoutY="45.0" prefHeight="349.0" prefWidth="369.0" style="-fx-background-color: A3A380;">
             <columns>
                 <TableColumn fx:id="columnName" prefWidth="75.0" text="Item Name" />
                 <TableColumn fx:id="columnPrice" prefWidth="75.0" text="Item Price" />
@@ -23,13 +23,13 @@
                         <Font size="27.0" />
                     </font>
                 </Label>
-                <Button fx:id="finish" mnemonicParsing="false" onAction="#onFinishButtonPressed" prefHeight="26.0" prefWidth="67.0" text="Finished">
+                <Button fx:id="finish" mnemonicParsing="false" onAction="#onFinishButtonPressed" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: #3D5A80;" text="Finished" textFill="WHITE">
                     <HBox.margin>
                         <Insets bottom="25.0" left="290.0" right="20.0" top="24.0" />
                     </HBox.margin></Button>
             </children>
         </HBox>
-      <TableView fx:id="selectedTableView" layoutX="380.0" layoutY="45.0" prefHeight="349.0" prefWidth="214.0">
+      <TableView fx:id="selectedTableView" layoutX="380.0" layoutY="45.0" prefHeight="349.0" prefWidth="214.0" style="-fx-background-color: A3A380;">
         <columns>
           <TableColumn fx:id="selectedColumnName" prefWidth="75.0" text="Item Name" />
           <TableColumn fx:id="selectedColumnPrice" prefWidth="75.0" text="Item Price" />

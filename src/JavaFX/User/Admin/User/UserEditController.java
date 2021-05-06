@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -44,22 +41,37 @@ public class UserEditController implements Initializable {
     TableColumn emailColumn;
     @FXML
     TableColumn passwordColumn;
-
     @FXML
     Button submit;
     @FXML
     Button selScene;
+    @FXML
+    Label error;
     public void onSubmitButtonClicked(){
         UserEdit userEdit = new UserEdit();
-        userEdit.Edit(ogUsername.getText(),ogEmail.getText(),ogPassword.getText(),edUsername.getText(),edEmail.getText(),edPassword.getText());
-
-        userNameColumn.setCellValueFactory(new PropertyValueFactory("uName"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory("Email"));
-        passwordColumn.setCellValueFactory(new PropertyValueFactory("pass"));
-        ObservableList<User> UserObservableList = FXCollections.observableArrayList();
-        FileIO fileIO = new FileIO();
-        UserObservableList.addAll(fileIO.getUserList());
-        tableView.setItems(UserObservableList);
+        int errCode = userEdit.Edit(ogUsername.getText(),ogEmail.getText(),ogPassword.getText(),edUsername.getText(),edEmail.getText(),edPassword.getText());
+        if(ogUsername.getText().isEmpty() && ogEmail.getText().isEmpty() && ogPassword.getText().isEmpty() && edUsername.getText().isEmpty() && edEmail.getText().isEmpty() && edPassword.getText().isEmpty()) {
+            error.setText("please fill all the textFields");
+        }else{
+            if (errCode == 1) {
+                userNameColumn.setCellValueFactory(new PropertyValueFactory("uName"));
+                emailColumn.setCellValueFactory(new PropertyValueFactory("Email"));
+                passwordColumn.setCellValueFactory(new PropertyValueFactory("pass"));
+                ObservableList<User> UserObservableList = FXCollections.observableArrayList();
+                FileIO fileIO = new FileIO();
+                UserObservableList.addAll(fileIO.getUserList());
+                tableView.setItems(UserObservableList);
+                error.setText("edited " + ogUsername.getText() + " to " + edUsername.getText());
+                ogUsername.setText("");
+                ogEmail.setText("");
+                ogPassword.setText("");
+                edUsername.setText("");
+                edEmail.setText("");
+                edPassword.setText("");
+            } else if (errCode == -1) {
+                error.setText("wrong username/email/pass");
+            }
+        }
     }
     public void onSelSceneButtonClicked(){
         Stage stage =new Stage();

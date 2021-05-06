@@ -55,7 +55,7 @@ public class FileIO {
         }
     }
 
-    public void removeUser(User user) {
+    public int removeUser(User user) {
         ArrayList<User> userList = getUserList();
         boolean isInList = false;
         for (int i = 0; i < userList.size(); i++) {
@@ -63,11 +63,12 @@ public class FileIO {
                 System.out.println("i have removed " + userList.get(i).getUName());
                 userList.remove(i);
                 isInList = true;
-                break;
+                return 1;
             }
         }
         if (!isInList) {
             System.out.println("Username, Email or password is incorrect\nPlease try again...");
+            return 0;
         }
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(filePath.loginPath);
@@ -78,6 +79,7 @@ public class FileIO {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     //------------------------------------------------------------------------------ITEM START------------------------------
