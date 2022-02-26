@@ -34,9 +34,8 @@ public class LoginController {
         /* TODO: when logged in display name on Select Scenes || DIFFICULTY:HARD */
         if (!userName.getText().isEmpty() && !email.getText().isEmpty() && !password.getText().isEmpty()) {//1111111
             if (!Temp.equals(Temp.empty()) && Temp.equals(Temp.Admin())) {
-                Stage stage = new Stage();
+                Stage stage;
                 Parent parent;
-
                 stage = (Stage) submit.getScene().getWindow();
                 try {
                     parent = FXMLLoader.load(getClass().getResource("Admin/User/Fxml/UserEditSelect.fxml"));
